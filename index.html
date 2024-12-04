@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vowelCounter</title>
+    <style>
+        section{
+            /* border: 1px solid black; */
+            text-align: center;
+            margin-top: 100px;
+            margin-left: 500px;
+            margin-right: 500px;
+            padding: 10px;
+            padding-bottom: 100px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+        }
+        textarea{
+            width: 200px;
+            height: 200px;
+        }
+        button{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="section">
+        <div id="header">
+            <h1>VOWEL COUNTER</h1>
+        </div>
+        <div id="textarea">
+            <textarea id="textInput"></textarea>
+        </div>
+        <div id="vowelCounter">
+            <h2>Vowel Counter: <span id="vowelCount">0</span> </h2>
+        </div>
+        <div id="buttons">
+            <button id="checkVowel">Check Vowel</button>
+            <button id="reset">Reset</button>
+        </div>
+    </section>
+
+    <script>
+        let textInput=document.getElementById("textInput")
+        let vowelCount=document.getElementById("vowelCount")
+        let checkVowel=document.getElementById("checkVowel")
+        let reset=document.getElementById("reset")
+        
+
+        function vowelcounting(text){
+            let count=0;
+            for(let i=0;i<text.length;i++)
+        {
+            if((text[i]=='a')|| (text[i]=='e') || (text[i]=='i') || (text[i]=='o') || (text[i]=='u') ||
+                (text[i]=='A')|| (text[i]=='E') || (text[i]=='I') || (text[i]=='O') || (text[i]=='U')){
+
+                    count++
+                }
+        }
+                return count;
+        }
+
+        checkVowel.addEventListener("click",()=>{
+            const text = textInput.value; 
+            const count = vowelcounting(text);
+            vowelCount.textContent = count;
+        })
+
+
+        reset.addEventListener("click", () => {
+            textInput.value = "";
+            vowelCount.textContent = 0;
+        });
+
+    </script>
+</body>
+</html>
